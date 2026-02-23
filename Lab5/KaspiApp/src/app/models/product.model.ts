@@ -6,5 +6,7 @@ export interface productModel {
     image: string;
     rating: number;
     images: string[];
+    likes: number;
     link: string;
+    categoryId: number;
 }
