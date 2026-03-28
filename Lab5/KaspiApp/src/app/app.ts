@@ -35,4 +35,9 @@ export class App {
   isSelected(categoryId: number): boolean {
     return this.selectedCategoryId === categoryId;
   }
+
+  onDeleteProduct(productId: number): void {
+    this.productService.deleteProduct(productId);
+    this.filteredProducts = this.filteredProducts.filter(product => product.id !== productId);
+  }
 }

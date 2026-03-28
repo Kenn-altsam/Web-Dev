@@ -72,10 +72,10 @@ section {
 }
 
 .pricing-container {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 28px;
-    align-items: stretch;
+    align-items: flex-start;
 }
 
 .pricing-card {
@@ -87,6 +87,7 @@ section {
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .pricing-card.featured {
@@ -235,7 +236,7 @@ section {
 }
 
 .addon-card {
-    background-color: 0969da;
+    /*background-color: #0969da;*/
     border: 1px solid #d0d7de;
     border-radius: 12px;
     padding: 24px;
@@ -244,11 +245,14 @@ section {
 
 .addon-card:hover {
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
 }
 
 .addon-card h3 {
     font-size: 18px;
     margin-bottom: 8px;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .addon-card p {
@@ -275,7 +279,7 @@ section {
     }
 
     .pricing-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 2fr;
     }
 
     .addons-grid {

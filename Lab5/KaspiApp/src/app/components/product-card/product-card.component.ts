@@ -9,6 +9,7 @@ import { productModel } from '../../models/product.model';
 })
 export class productCard {
     readonly product = input.required<productModel>();
+    products: productModel[] = [];
     readonly Math = Math;
 
     readonly deleteProduct = output<number>();
@@ -17,8 +18,9 @@ export class productCard {
     liked = signal(false);
 
     onLike(): void {
-        this.likes.update(l => l + 1);
-        this.liked.set(true);
+        this.liked.set(!this.liked());
+        this.likes.update(l => this.liked() ? 1 : 0);
+       
     }
 
     onDelete(): void {
@@ -37,4 +39,6 @@ export class productCard {
         const shareURL = `https://t.me/share/url?url=${encodeURIComponent(url)}$text=${encodeURIComponent(text)}`;
         window.open(shareURL, '_blank');
     }
+
+    
 }

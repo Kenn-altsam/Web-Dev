@@ -341,7 +341,7 @@ export class productService {
         name: 'Case iPhone 15 Pro Clear',
         description: 'Чехол для Apple iPhone 15 Pro прозрачный',
         price: 110,
-        rating: 5,
+        rating: 1,
         image: 'products/iphone-case9.png',
         images: [],
         link: 'https://kaspi.kz/shop/p/chehol-dlja-apple-iphone-15-pro-prozrachnyi-113282783/?c=750000000',
@@ -421,5 +421,9 @@ export class productService {
 
     getProductsByCategory(categoryId: number): productModel[] {
         return this.products.filter(product => product.categoryId === categoryId);
+    }
+
+    deleteProduct(productId: number): void {
+        this.products = this.products.filter(product => product.id !== productId);
     }
 }

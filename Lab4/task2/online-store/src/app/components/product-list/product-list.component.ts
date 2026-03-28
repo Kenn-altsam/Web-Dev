@@ -12,11 +12,7 @@ import { productCard } from "../product-card/product-card.component";
     styleUrl: './product-list.component.css'
 })
 export class productList{
-   constructor() {
-   this.products.sort((a, b) =>
-      a.name.localeCompare(b.name)
-   );
-   }
+   
 
     products: productModel[] = [
     {
@@ -34,7 +30,7 @@ export class productList{
     name: "TypeC cable",
     description: "Кабель VARIUM USB 4 Type-C (M), 1 м, VTT03 белый",
     price: 1950,
-    rating: 4,
+    rating: 3,
     image: "products/typec.jpg",
     images: [],
     link: "https://kaspi.kz/shop/p/kabel-varium-usb-4-type-c-m-1-m-vtt03-belyi-144182006/?c=750000000"
@@ -44,7 +40,7 @@ export class productList{
     name: "Jasper Case",
     description: "Чехол JASPER для Apple iPhone 17 Pro прозрачный",
     price: 990,
-    rating: 5,
+    rating: 4,
     image: "products/iphone-case3.png",
     images: [],
     link: "https://kaspi.kz/shop/p/chehol-jasper-dlja-apple-iphone-17-pro-prozrachnyi-146498145/?c=750000000"
@@ -141,3 +137,55 @@ export class productList{
     },
   ];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// constructor() {
+//    this.products.sort((a, b) =>
+//       a.name.localeCompare(b.name)
+//    );
+//    }

@@ -67,6 +67,15 @@ ul {
     margin: 0;
 }
 
+/* ul.two-columns {
+    column-count: 2;
+    column-gap: 0;
+}
+
+ul.two-columns li {
+    break-inside: avoid;
+} */
+
 li {
     display: flex;
     justify-content: space-between;
@@ -98,4 +107,46 @@ li:last-child {
 
 .delete:hover {
     color: darkred;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#taskList.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px;
 }

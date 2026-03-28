@@ -45,6 +45,7 @@
       </button>
     }
   </div>
+  
 </nav>
 
-<prod-list [products]="filteredProducts"/>
+<prod-list [products]="filteredProducts" (deleteProduct)="onDeleteProduct($event)"/>

@@ -1,4 +1,4 @@
-import { Component, input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, input, OnChanges, SimpleChanges, output } from '@angular/core';
 import { productModel } from '../../models/product.model';
 import { categoryModel } from '../../models/category.model';
 import { productCard } from '../product-card/product-card.component';
@@ -13,11 +13,15 @@ export class productList implements OnChanges {
    readonly products = input.required<productModel[]>();
    displayProducts: productModel[] = [];
 
+   readonly deleteProduct = output<number>();
+
    ngOnChanges() {
       this.displayProducts = [...this.products()];
    }
 
    onDelete(productId: number): void {
       this.displayProducts = this.displayProducts.filter(product => product.id !== productId);
+      this.deleteProduct.emit(productId);
    }
+   
 }
