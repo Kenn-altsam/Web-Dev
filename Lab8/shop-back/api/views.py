@@ -41,7 +41,21 @@ def categories_list(request):
 
 def category_detail(request, id):
     category = get_object_or_404(Category, id=id)
-    return JsonResponse(category_to_dict(category))
+
+    if request.method == "GET":
+        return JsonResponse(category_to_dict(category))
+
+    elif request.method == "DELETE":
+        if category.products.exists():
+            return JsonResponse(
+                {"error": "Cannot delete this category because it is not empty."},
+                status=400
+            )
+
+        category.delete()
+        return JsonResponse({"message": "Category deleted successfully."})
+
+    return JsonResponse({"error": "Method not allowed"}, status=405)
 
 
 def category_products(request, id):
@@ -49,3 +63,28 @@ def category_products(request, id):
     products = category.products.all()
     data = [product_to_dict(product) for product in products]
     return JsonResponse(data, safe=False)
+
+
+def products_by_price_range(request):
+    min_price = request.GET.get("min")
+    max_price = request.GET.get("max")
+
+    try:
+        products = Product.objects.all()
+
+        if min_price is not None:
+            min_price = float(min_price)
+            products = products.filter(price__gte=min_price)
+
+        if max_price is not None:
+            max_price = float(max_price)
+            products = products.filter(price__lte=max_price)
+
+        data = [product_to_dict(product) for product in products]
+        return JsonResponse(data, safe=False)
+
+    except ValueError:
+        return JsonResponse(
+            {"error": "min and max must be numbers"},
+            status=400
+        )

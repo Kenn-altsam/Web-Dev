@@ -1,0 +1,17 @@
+def products_by_price_range(request):
+    min_price = request.GET.get("min")
+    max_price = request.GET.get("max")
+
+    products = Product.objects.all()
+
+    if min_price is not None:
+        products = products.filter(price__gte=min_price)
+
+    if max_price is not None:
+        products = products.filter(price__lte=max_price)
+
+    data = [product_to_dict(product) for product in products]
+    return JsonResponse(data, safe=False)
+
+
+http://127.0.0.1:8000/api/products/price-range/?min=1&max=50000
